@@ -14,6 +14,7 @@ public class User {
     @Email(message = "Invalid email")
     private String email;
 
+    @NotBlank(message = "Password required")
     @Size(min = 6, message = "Password must be at least 6 characters")
     private String password;
 
@@ -66,10 +67,10 @@ public class User {
     }
 
     private void checkPassword() {
-        if (this.password != null && this.verifyPassword != null) {
-            if(!this.password.equals(this.verifyPassword)) {
-                setVerifyPassword(null);
+
+            if (!password.equals(verifyPassword)) {
+                verifyPassword = null;
             }
-        }
+
     }
 }
